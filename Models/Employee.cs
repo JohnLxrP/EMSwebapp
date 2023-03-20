@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EMSwebapp.Models
 {
@@ -7,7 +8,11 @@ namespace EMSwebapp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DOB { get; set; }
+
+        [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
+
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Invalid Number")]
         public string Phone { get; set; }
 
         public int DepartmentId { get; set; }

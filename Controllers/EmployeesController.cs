@@ -20,10 +20,20 @@ namespace EMSwebapp.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Employees.Include(e => e.Department);
-            return View(await applicationDbContext.ToListAsync());
+            var employees = from e in _context.Employees.Include(e => e.Department)
+                            select e;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(e => e.Name.Contains(searchString) ||
+                                                 e.Email.Contains(searchString) ||
+                                                 e.Phone.Contains(searchString) ||
+                                                 e.Department.Name.Contains(searchString));
+            }
+
+            return View(await employees.ToListAsync());
         }
 
         // GET: Employees/Details/5

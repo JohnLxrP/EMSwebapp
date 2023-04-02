@@ -18,13 +18,16 @@ namespace EMSwebapp.Models
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }
 
+        [Required(AllowEmptyStrings = true)]
+        public string Review { get; set; }
+
         public Employee()
         {
 
         }
 
 
-        public Employee(int id, string name, DateTime dob, string email, string phone, int departmentid)
+        public Employee(int id, string name, DateTime dob, string email, string phone, int departmentid, string review)
         {
             Id = id;
             Name = name;
@@ -32,6 +35,7 @@ namespace EMSwebapp.Models
             Email = email;
             Phone = phone;
             DepartmentId = departmentid;
+            Review = review;
         }
 
 

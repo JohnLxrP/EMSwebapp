@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EMSwebapp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230319125037_init")]
+    [Migration("20230402091120_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,10 @@ namespace EMSwebapp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Review")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

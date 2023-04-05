@@ -27,6 +27,7 @@ namespace EMSwebapp.Data
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Benefit> Benefit { get; set; }
 
 
 

@@ -103,7 +103,7 @@ namespace EMSwebapp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DOB,Email,Phone,DepartmentId,Review")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DOB,Email,Phone,DepartmentId,Review,BenefitId")] Employee employee)
         {
             if (id != employee.Id)
             {
@@ -131,6 +131,7 @@ namespace EMSwebapp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Id", employee.DepartmentId);
+            ViewData["BenefitId"] = new SelectList(_context.Benefit, "Id", "Id", employee.BenefitId);
             return View(employee);
         }
 
